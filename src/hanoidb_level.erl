@@ -46,7 +46,7 @@
 
 -export([open/5, lookup/2, lookup/3, inject/2, close/1, snapshot_range/3, blocking_range/3,
          begin_incremental_merge/2, await_incremental_merge/1, set_max_level/2,
-         unmerged_count/1, destroy/1]).
+         unmerged_count/1, destroy/1, level/1]).
 
 -include_lib("kernel/include/file.hrl").
 
@@ -89,6 +89,9 @@ open(Dir,Level,Next,Opts,Owner) when Level>0 ->
                               end,
                               SpawnOpt),
     {ok, PID}.
+
+level(Ref) ->
+    plain_rpc:call(Ref, level).
 
 lookup(Ref, Key) ->
     plain_rpc:call(Ref, {lookup, Key}).
@@ -355,6 +358,11 @@ main_loop(State = #state{ next=Next }) ->
                State#state.step_next_ref   == undefined
                ->
             do_step(StepFrom, DoneWork, StepSize, State);
+
+        %% simply replies the level number
+        ?CALL(From, level) ->
+            plain_rpc:send_reply(From, State#state.level),
+            main_loop(State);
 
         {MRef, step_done} when MRef == State#state.step_merge_ref ->
             demonitor(MRef, [flush]),
@@ -776,31 +784,18 @@ begin_merge(State) ->
     AFileName = filename("A",State),
     BFileName = filename("B",State),
     XFileName = filename("X",State),
-    Owner = self(),
 
     ?log("starting merge~n", []),
 
     file:delete(XFileName),
 
-    MergePID = proc_lib:spawn_link(fun() ->
-         try
-                       ?log("merge begun~n", []),
-
-                       {ok, OutCount} = hanoidb_merger:merge(AFileName, BFileName, XFileName,
-                                                           ?BTREE_SIZE(State#state.level + 1),
-                                                           State#state.next =:= undefined,
-                                                           State#state.opts ),
-
-                       Owner ! ?CAST(self(),{merge_done, OutCount, XFileName})
-         catch
-            C:E ->
-                 error_logger:error_msg("merge failed ~p:~p ~p~n",
-                                        [C,E,erlang:get_stacktrace()]),
-                 erlang:raise(C,E,erlang:get_stacktrace())
-         end
-               end),
+    MergePID = hanoidb_merger:start(AFileName, BFileName, XFileName,
+        ?BTREE_SIZE(State#state.level + 1),
+        State#state.next =:= undefined,
+        State#state.opts),
 
     {ok, MergePID}.
+
 
 
 close_and_delete_a_and_b(State) ->

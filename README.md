@@ -1,5 +1,7 @@
 # HanoiDB Indexed Key/Value Storage
 
+[![Build Status](https://travis-ci.org/krestenkrab/hanoidb.svg?branch=master)](https://travis-ci.org/krestenkrab/hanoidb)
+
 HanoiDB implements an indexed, key/value storage engine.  The primary index is
 a log-structured merge tree (LSM-BTree) implemented using "doubling sizes"
 persistent ordered sets of key/value pairs, similar is some regards to
@@ -80,7 +82,13 @@ Put these values in your `app.config` in the `hanoidb` section
           %% Both have same log2(N) worst case, but `fast' is
           %% sometimes faster; yielding latency fluctuations.
           %%
-          {merge_strategy, fast | predictable}
+          {merge_strategy, fast | predictable},
+
+          %% "Level0" files has 2^N KVs in it, defaulting to 1024.
+          %% If the database is to contain very small KVs, this is
+          %% likely too small, and will result in many unnecessary
+          %% file operations.  (Subsequent levels double in size).
+          {top_level, 10}  % 1024 Key/Values
          ]},
 ```
 

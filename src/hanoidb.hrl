@@ -23,8 +23,8 @@
 %% ----------------------------------------------------------------------------
 
 
-%% smallest levels are 256 entries
--define(TOP_LEVEL, 8).
+%% smallest levels are 1024 entries
+-define(TOP_LEVEL, 10).
 -define(BTREE_SIZE(Level), (1 bsl (Level))).
 -define(FILE_FORMAT, <<"HAN2">>).
 -define(FIRST_BLOCK_POS, byte_size(?FILE_FORMAT)).
@@ -50,10 +50,11 @@
 
 -record(nursery, { log_file :: file:fd(),
                    dir :: string(),
-                   cache :: gb_tree(),
+                   cache :: gb_trees:tree(binary(), binary()),
                    total_size=0 :: integer(),
                    count=0 :: integer(),
                    last_sync=now() :: erlang:timestamp(),
+                   min_level :: integer(),
                    max_level :: integer(),
                    config=[] :: [{atom(), term()}],
                    step=0 :: integer(),
@@ -68,4 +69,26 @@
 -type expvalue() :: { value(), expiry() }
                   | value()
                   | filepos().
+
+-ifdef(USE_EBLOOM).
+-define(HANOI_BLOOM_TYPE, ebloom).
+-else.
+-define(HANOI_BLOOM_TYPE, sbloom).
+-endif.
+
+-define(BLOOM_NEW(Size),            hanoidb_util:bloom_new(Size, ?HANOI_BLOOM_TYPE)).
+-define(BLOOM_TO_BIN(Bloom),        hanoidb_util:bloom_to_bin(Bloom)).
+-define(BIN_TO_BLOOM(Bin, Fmt),     hanoidb_util:bin_to_bloom(Bin, Fmt)).
+-define(BLOOM_INSERT(Bloom, Key),   hanoidb_util:bloom_insert(Bloom, Key)).
+-define(BLOOM_CONTAINS(Bloom, Key), hanoidb_util:bloom_contains(Bloom, Key)).
+
+%% tags used in the on-disk representation
+-define(TAG_KV_DATA,  16#80).
+-define(TAG_DELETED,  16#81).
+-define(TAG_POSLEN32, 16#82).
+-define(TAG_TRANSACT, 16#83).
+-define(TAG_KV_DATA2, 16#84).
+-define(TAG_DELETED2, 16#85).
+-define(TAG_END,      16#FF).
+
 

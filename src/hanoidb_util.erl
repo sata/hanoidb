@@ -38,20 +38,25 @@
          , tstamp/0
          , expiry_time/1
          , has_expired/1
-         , ensure_expiry/1 ]).
+         , ensure_expiry/1
+
+         , bloom_type/1
+         , bloom_new/2
+         , bloom_to_bin/1
+         , bin_to_bloom/1
+         , bin_to_bloom/2
+         , bloom_insert/2
+         , bloom_contains/2
+ ]).
 
 -include("src/hanoidb.hrl").
 
 -define(ERLANG_ENCODED,  131).
 -define(CRC_ENCODED,     127).
+-define(BISECT_ENCODED,  126).
 
--define(TAG_KV_DATA,  16#80).
--define(TAG_DELETED,  16#81).
--define(TAG_POSLEN32, 16#82).
--define(TAG_TRANSACT, 16#83).
--define(TAG_KV_DATA2, 16#84).
--define(TAG_DELETED2, 16#85).
--define(TAG_END,      16#FF).
+
+-define(FILE_ENCODING, bisect).
 
 -compile({inline, [crc_encapsulate/1, crc_encapsulate_kv_entry/2 ]}).
 
@@ -134,18 +139,47 @@ uncompress(<<?GZIP_COMPRESSION, Data/binary>>) ->
     zlib:gunzip(Data).
 
 encode_index_node(KVList, Method) ->
-    TermData = [ ?TAG_END |
-                 lists:map(fun ({Key,Value}) ->
-                                   crc_encapsulate_kv_entry(Key, Value)
-                           end,
-                           KVList) ],
+    TermData =
+    case ?FILE_ENCODING of
+        bisect ->
+            Binary = vbisect:from_orddict(lists:map(fun binary_encode_kv/1, KVList)),
+            CRC = erlang:crc32(Binary),
+            [?BISECT_ENCODED, <<CRC:32>>, Binary];
+        hanoi2 ->
+            [ ?TAG_END |
+              lists:map(fun ({Key,Value}) ->
+                                crc_encapsulate_kv_entry(Key, Value)
+                        end,
+                        KVList) ]
+    end,
     {MethodName, OutData} = compress(Method, TermData),
     {ok, [MethodName | OutData]}.
 
 decode_index_node(Level, Data) ->
     TermData = uncompress(Data),
-    {ok, KVList} = decode_kv_list(TermData),
-    {ok, {node, Level, KVList}}.
+    case decode_kv_list(TermData) of
+        {ok, KVList} ->
+            {ok, {node, Level, KVList}};
+        {bisect, Binary} ->
+%            io:format("[page level=~p~n", [Level]),
+%            vbisect:foldl(fun(K,V,_) -> io:format(" ~p -> ~p,~n", [K,V]) end, 0, Binary),
+%            io:format("]~n",[]),
+            {ok, {node, Level, Binary}}
+    end.
+
+
+binary_encode_kv({Key, {Value,infinity}}) ->
+    binary_encode_kv({Key,Value});
+binary_encode_kv({Key, {?TOMBSTONE, TStamp}}) ->
+    {Key, <<?TAG_DELETED2, TStamp:32>>};
+binary_encode_kv({Key, ?TOMBSTONE}) ->
+    {Key, <<?TAG_DELETED>>};
+binary_encode_kv({Key, {Value, TStamp}}) when is_binary(Value) ->
+    {Key, <<?TAG_KV_DATA2, TStamp:32, Value/binary>>};
+binary_encode_kv({Key, Value}) when is_binary(Value)->
+    {Key, <<?TAG_KV_DATA, Value/binary>>};
+binary_encode_kv({Key, {Pos, Len}}) when Len < 16#ffffffff ->
+    {Key, <<?TAG_POSLEN32, Pos:64/unsigned, Len:32/unsigned>>}.
 
 
 -spec crc_encapsulate_kv_entry(binary(), expvalue()) -> iolist().
@@ -184,7 +218,14 @@ decode_kv_list(<<?TAG_END, Custom/binary>>) ->
 decode_kv_list(<<?ERLANG_ENCODED, _/binary>>=TermData) ->
     {ok, erlang:term_to_binary(TermData)};
 decode_kv_list(<<?CRC_ENCODED, Custom/binary>>) ->
-    decode_crc_data(Custom, [], []).
+    decode_crc_data(Custom, [], []);
+decode_kv_list(<<?BISECT_ENCODED, CRC:32/unsigned, Binary/binary>>) ->
+    CRCTest = erlang:crc32( Binary ),
+    if CRC == CRCTest ->
+            {bisect, Binary};
+       true ->
+            {bisect, vbisect:from_orddict([])}
+    end.
 
 -spec decode_crc_data(binary(), list(), list()) -> {ok, [kventry()]} | {partial, [kventry()], iolist()}.
 decode_crc_data(<<>>, [], Acc) ->
@@ -265,4 +306,43 @@ ensure_expiry(Opts) ->
             ok
     end.
 
+bloom_type({ebloom, _}) ->
+    ebloom;
+bloom_type({sbloom, _}) ->
+    sbloom.
+
+bloom_new(Size, sbloom) ->
+    {ok, {sbloom, hanoidb_bloom:bloom(Size, 0.01)}};
+bloom_new(Size, ebloom) ->
+    {ok, Bloom} = ebloom:new(Size, 0.01, Size),
+    {ok, {ebloom, Bloom}}.
+
+bloom_to_bin({sbloom, Bloom}) ->
+    hanoidb_bloom:encode(Bloom);
+bloom_to_bin({ebloom, Bloom}) ->
+    ebloom:serialize(Bloom).
+
+bin_to_bloom(GZiped  = <<16#1F, 16#8B, _/binary>>) ->
+    bin_to_bloom(GZiped, sbloom);
+bin_to_bloom(TermBin = <<131, _/binary>>) ->
+    erlang:term_to_binary(TermBin);
+bin_to_bloom(Blob) ->
+    bin_to_bloom(Blob, ebloom).
+
+bin_to_bloom(Binary, sbloom) ->
+    {ok, {sbloom, hanoidb_bloom:decode(Binary)}};
+bin_to_bloom(Binary, ebloom) ->
+    {ok, Bloom} = ebloom:deserialize(Binary),
+    {ok, {ebloom, Bloom}}.
+
+bloom_insert({sbloom, Bloom}, Key) ->
+    {ok, {sbloom, hanoidb_bloom:add(Key, Bloom)}};
+bloom_insert({ebloom, Bloom}, Key) ->
+    ok = ebloom:insert(Bloom, Key),
+    {ok, {ebloom, Bloom}}.
+
+bloom_contains({sbloom, Bloom}, Key) ->
+    hanoidb_bloom:member(Key, Bloom);
+bloom_contains({ebloom, Bloom}, Key) ->
+    ebloom:contains(Bloom, Key).
 

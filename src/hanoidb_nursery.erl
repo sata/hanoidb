@@ -25,46 +25,46 @@
 -module(hanoidb_nursery).
 -author('Kresten Krab Thorup <krab@trifork.com>').
 
--export([new/3, recover/4, finish/2, lookup/2, add/4, add/5]).
+-export([new/4, recover/5, finish/2, lookup/2, add/4, add/5]).
 -export([do_level_fold/3, set_max_level/2, transact/3, destroy/1]).
 
 -include("include/hanoidb.hrl").
 -include("hanoidb.hrl").
 -include_lib("kernel/include/file.hrl").
 
--spec new(string(), integer(), [_]) -> {ok, #nursery{}} | {error, term()}.
+-spec new(string(), integer(), integer(), [_]) -> {ok, #nursery{}} | {error, term()}.
 
 -define(LOGFILENAME(Dir), filename:join(Dir, "nursery.log")).
 
 %% do incremental merge every this many inserts
 %% this value *must* be less than or equal to
 %% 2^TOP_LEVEL == ?BTREE_SIZE(?TOP_LEVEL)
--define(INC_MERGE_STEP, ?BTREE_SIZE(?TOP_LEVEL)/2).
+-define(INC_MERGE_STEP, ?BTREE_SIZE(MinLevel) div 2).
 
-new(Directory, MaxLevel, Config) ->
+new(Directory, MinLevel, MaxLevel, Config) ->
     hanoidb_util:ensure_expiry(Config),
 
     {ok, File} = file:open(?LOGFILENAME(Directory),
                             [raw, exclusive, write, delayed_write, append]),
     {ok, #nursery{ log_file=File, dir=Directory, cache= gb_trees:empty(),
-                   max_level=MaxLevel, config=Config }}.
+                   min_level=MinLevel, max_level=MaxLevel, config=Config }}.
 
 
-recover(Directory, TopLevel, MaxLevel, Config) ->
+recover(Directory, TopLevel, MinLevel, MaxLevel, Config)
+  when MinLevel =< MaxLevel, is_integer(MinLevel), is_integer(MaxLevel) ->
     hanoidb_util:ensure_expiry(Config),
-
     case file:read_file_info(?LOGFILENAME(Directory)) of
         {ok, _} ->
-            ok = do_recover(Directory, TopLevel, MaxLevel, Config),
-            new(Directory, MaxLevel, Config);
+            ok = do_recover(Directory, TopLevel, MinLevel, MaxLevel, Config),
+            new(Directory, MinLevel, MaxLevel, Config);
         {error, enoent} ->
-            new(Directory, MaxLevel, Config)
+            new(Directory, MinLevel, MaxLevel, Config)
     end.
 
-do_recover(Directory, TopLevel, MaxLevel, Config) ->
+do_recover(Directory, TopLevel, MinLevel, MaxLevel, Config) ->
     %% repair the log file; storing it in nursery2
     LogFileName = ?LOGFILENAME(Directory),
-    {ok, Nursery} = read_nursery_from_log(Directory, MaxLevel, Config),
+    {ok, Nursery} = read_nursery_from_log(Directory, MinLevel, MaxLevel, Config),
     ok = finish(Nursery, TopLevel),
     %% assert log file is gone
     {error, enoent} = file:read_file_info(LogFileName),
@@ -82,7 +82,7 @@ fill_cache(Transactions, Cache)
   when is_list(Transactions) ->
     lists:foldl(fun fill_cache/2, Cache, Transactions).
 
-read_nursery_from_log(Directory, MaxLevel, Config) ->
+read_nursery_from_log(Directory, MinLevel, MaxLevel, Config) ->
     {ok, LogBinary} = file:read_file(?LOGFILENAME(Directory)),
     Cache =
         case hanoidb_util:decode_crc_data(LogBinary, [], []) of
@@ -92,7 +92,7 @@ read_nursery_from_log(Directory, MaxLevel, Config) ->
                 error_logger:info_msg("ignoring undecypherable bytes in ~p~n", [?LOGFILENAME(Directory)]),
                 fill_cache(KVs, gb_trees:empty())
         end,
-    {ok, #nursery{ dir=Directory, cache=Cache, count=gb_trees:size(Cache), max_level=MaxLevel, config=Config }}.
+    {ok, #nursery{ dir=Directory, cache=Cache, count=gb_trees:size(Cache), min_level=MinLevel, max_level=MaxLevel, config=Config }}.
 
 %% @doc Add a Key/Value to the nursery
 %% @end
@@ -142,12 +142,12 @@ do_sync(File, Nursery) ->
         case application:get_env(hanoidb, sync_strategy) of
             {ok, sync} ->
                 file:datasync(File),
-                now();
+                os:timestamp();
             {ok, {seconds, N}} ->
-                MicrosSinceLastSync = timer:now_diff(now(), Nursery#nursery.last_sync),
-                if (MicrosSinceLastSync / 1000000) >= N ->
+                MicrosSinceLastSync = timer:now_diff(os:timestamp(), Nursery#nursery.last_sync),
+                if (MicrosSinceLastSync div 1000000) >= N ->
                         file:datasync(File),
-                        now();
+                        os:timestamp();
                    true ->
                         Nursery#nursery.last_sync
                 end;
@@ -175,7 +175,7 @@ lookup(Key, #nursery{cache=Cache}) ->
 %% @end
 -spec finish(Nursery::#nursery{}, TopLevel::pid()) -> ok.
 finish(#nursery{ dir=Dir, cache=Cache, log_file=LogFile, merge_done=DoneMerge,
-                 count=Count, config=Config }, TopLevel) ->
+                 count=Count, config=Config, min_level=MinLevel }, TopLevel) ->
 
     hanoidb_util:ensure_expiry(Config),
 
@@ -189,7 +189,7 @@ finish(#nursery{ dir=Dir, cache=Cache, log_file=LogFile, merge_done=DoneMerge,
         N when N > 0 ->
             %% next, flush cache to a new BTree
             BTreeFileName = filename:join(Dir, "nursery.data"),
-            {ok, BT} = hanoidb_writer:open(BTreeFileName, [{size, ?BTREE_SIZE(?TOP_LEVEL)},
+            {ok, BT} = hanoidb_writer:open(BTreeFileName, [{size, ?BTREE_SIZE(MinLevel)},
                                                            {compress, none} | Config]),
             try
                 ok = gb_trees_ext:fold(fun(Key, Value, Acc) ->
@@ -205,10 +205,10 @@ finish(#nursery{ dir=Dir, cache=Cache, log_file=LogFile, merge_done=DoneMerge,
 
             %% Issue some work if this is a top-level inject (blocks until previous such
             %% incremental merge is finished).
-            if DoneMerge >= ?BTREE_SIZE(?TOP_LEVEL) ->
+            if DoneMerge >= ?BTREE_SIZE(MinLevel) ->
                     ok;
                true ->
-                    hanoidb_level:begin_incremental_merge(TopLevel, ?BTREE_SIZE(?TOP_LEVEL) - DoneMerge)
+                    hanoidb_level:begin_incremental_merge(TopLevel, ?BTREE_SIZE(MinLevel) - DoneMerge)
             end;
 %            {ok, _Nursery2} = do_inc_merge(Nursery, Count, TopLevel);
 
@@ -247,13 +247,13 @@ add(Key, Value, Expiry, Nursery, Top) ->
     end.
 
 -spec flush(#nursery{}, pid()) -> {ok, #nursery{}}.
-flush(Nursery=#nursery{ dir=Dir, max_level=MaxLevel, config=Config }, Top) ->
+flush(Nursery=#nursery{ dir=Dir, min_level=MinLevel, max_level=MaxLevel, config=Config }, Top) ->
     ok = finish(Nursery, Top),
     {error, enoent} = file:read_file_info(filename:join(Dir, "nursery.log")),
-    hanoidb_nursery:new(Dir, MaxLevel, Config).
+    hanoidb_nursery:new(Dir, MinLevel,  MaxLevel, Config).
 
-has_room(#nursery{ count=Count }, N) ->
-    (Count + N + 1) < ?BTREE_SIZE(?TOP_LEVEL).
+has_room(#nursery{ count=Count, min_level=MinLevel }, N) ->
+    (Count + N + 1) < ?BTREE_SIZE(MinLevel).
 
 ensure_space(Nursery, NeededRoom, Top) ->
     case has_room(Nursery, NeededRoom) of
@@ -303,7 +303,7 @@ transact1(Spec, Nursery1=#nursery{ log_file=File, cache=Cache0, total_size=Total
 
     do_inc_merge(Nursery2#nursery{ cache=Cache2, total_size=TotalSize+erlang:iolist_size(Data), count=Count }, length(Spec), Top).
 
-do_inc_merge(Nursery=#nursery{ step=Step, merge_done=Done }, N, TopLevel) ->
+do_inc_merge(Nursery=#nursery{ step=Step, merge_done=Done, min_level=MinLevel }, N, TopLevel) ->
     if Step+N >= ?INC_MERGE_STEP ->
             hanoidb_level:begin_incremental_merge(TopLevel, Step + N),
             {ok, Nursery#nursery{ step=0, merge_done=Done + Step + N }};

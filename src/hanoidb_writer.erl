@@ -55,9 +55,9 @@
 
                 name                     :: string(),
 
-                bloom                    :: term(),
+                bloom                    :: {ebloom, term()} | {sbloom, term()},
                 block_size = ?NODE_SIZE  :: integer(),
-                compress  = none         :: none | snappy | gzip, % | lz4,
+                compress  = none         :: none | snappy | gzip | lz4,
                 opts = []                :: list(any()),
 
                 value_count = 0          :: integer(),
@@ -94,7 +94,7 @@ init([Name, Options]) ->
     case do_open(Name, Options, [exclusive]) of
         {ok, IdxFile} ->
             ok = file:write(IdxFile, ?FILE_FORMAT),
-            Bloom = hanoidb_bloom:bloom(Size),
+            {ok, Bloom} = ?BLOOM_NEW(Size),
             BlockSize = hanoidb:get_opt(block_size, Options, ?NODE_SIZE),
             {ok, #state{ name=Name,
                          index_file_pos=?FIRST_BLOCK_POS, index_file=IdxFile,
@@ -170,11 +170,11 @@ serialize(#state{ bloom=Bloom, index_file=File, index_file_pos=Position }=State)
             exit({bad_position, Position, WrongPosition})
     end,
     ok = file:close(File),
-    erlang:term_to_binary( { State#state{ index_file=undefined }, hanoidb_bloom:encode(Bloom) } ).
+    erlang:term_to_binary( { State#state{ index_file=undefined, bloom=undefined }, ?BLOOM_TO_BIN(Bloom), hanoidb_util:bloom_type(Bloom) } ).
 
 deserialize(Binary) ->
-    {State, Bin} = erlang:binary_to_term(Binary),
-    Bloom = hanoidb_bloom:decode(Bin),
+    {State, Bin, Type} = erlang:binary_to_term(Binary),
+    {ok, Bloom} = ?BIN_TO_BLOOM(Bin, Type),
     {ok, IdxFile} = do_open(State#state.name, State#state.opts, []),
     State#state{ bloom=Bloom, index_file=IdxFile }.
 
@@ -188,7 +188,8 @@ do_open(Name, Options, OpenOpts) ->
 %% @doc flush pending nodes and write trailer
 archive_nodes(#state{ nodes=[], last_node_pos=LastNodePos, last_node_size=_LastNodeSize, bloom=Bloom, index_file=IdxFile }=State) ->
 
-    BloomBin = hanoidb_bloom:encode(Bloom),
+    BloomBin = ?BLOOM_TO_BIN(Bloom),
+    true = is_binary(BloomBin),
     BloomSize = byte_size(BloomBin),
     RootPos =
         case LastNodePos of
@@ -199,12 +200,12 @@ archive_nodes(#state{ nodes=[], last_node_pos=LastNodePos, last_node_size=_LastN
             _ ->
                 LastNodePos
         end,
-    Trailer = << 0:32/unsigned, BloomBin/binary, BloomSize:32/unsigned,  RootPos:64/unsigned >>,
+    Trailer = [ << 0:32/unsigned>> , BloomBin, << BloomSize:32/unsigned,  RootPos:64/unsigned >> ],
 
     ok = file:write(IdxFile, Trailer),
     ok = file:datasync(IdxFile),
     ok = file:close(IdxFile),
-    {ok, State#state{ index_file=undefined, index_file_pos=undefined }};
+    {ok, State#state{ index_file=undefined, index_file_pos=undefined, bloom=undefined }};
 
 archive_nodes(State=#state{ nodes=[#node{level=N, members=[{_,{Pos,_Len}}]}], last_node_pos=Pos })
   when N > 0 ->
@@ -221,7 +222,8 @@ append_node(Level, Key, Value, State=#state{ nodes=[] }) ->
 append_node(Level, Key, Value, State=#state{ nodes=[ #node{level=Level2 } |_]=Stack })
   when Level < Level2 ->
     append_node(Level, Key, Value, State#state{ nodes=[ #node{ level=(Level2 - 1) } | Stack] });
-append_node(Level, Key, Value, #state{ nodes=[ #node{level=Level, members=List, size=NodeSize}=CurrNode | RestNodes ], value_count=VC, tombstone_count=TC, bloom=Bloom }=State) ->
+append_node(Level, Key, Value, #state{ nodes=[ #node{level=Level, members=List, size=NodeSize}=CurrNode | RestNodes ], value_count=VC, tombstone_count=TC, bloom=Bloom }=State)
+  when Bloom /= undefined ->
     %% The top-of-stack node is at the level we wish to insert at.
 
     %% Assert that keys are increasing:
@@ -236,10 +238,14 @@ append_node(Level, Key, Value, #state{ nodes=[ #node{level=Level, members=List, 
                     exit({badarg, Key})
             end
     end,
-
     NewSize = NodeSize + hanoidb_util:estimate_node_size_increment(List, Key, Value),
 
-    NewBloom = hanoidb_bloom:add(Key, Bloom),
+    {ok,Bloom2} = case Level of
+             0 ->
+                 ?BLOOM_INSERT(Bloom, Key);
+             _ ->
+                 {ok,Bloom}
+         end,
 
     {TC1, VC1} =
         case Level of
@@ -258,7 +264,7 @@ append_node(Level, Key, Value, #state{ nodes=[ #node{level=Level, members=List, 
 
     NodeMembers = [{Key, Value} | List],
     State2 = State#state{ nodes=[CurrNode#node{members=NodeMembers, size=NewSize} | RestNodes],
-                          value_count=VC1, tombstone_count=TC1, bloom=NewBloom },
+                          value_count=VC1, tombstone_count=TC1, bloom=Bloom2 },
 
     case NewSize >= State#state.block_size of
         true ->
@@ -267,7 +273,8 @@ append_node(Level, Key, Value, #state{ nodes=[ #node{level=Level, members=List, 
             {ok, State2}
     end.
 
-flush_node_buffer(#state{nodes=[#node{ level=Level, members=NodeMembers }|RestNodes], compress=Compress, index_file_pos=NodePos} = State) ->
+flush_node_buffer(#state{nodes=[#node{ level=Level, members=NodeMembers }|RestNodes], compress=Compress, index_file_pos=NodePos } = State) ->
+
     OrderedMembers = lists:reverse(NodeMembers),
     {ok, BlockData} = hanoidb_util:encode_index_node(OrderedMembers, Compress),
 
