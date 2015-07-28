@@ -41,7 +41,7 @@
 
 -define(W, 27).
 
--type bitmask() :: array() | any().
+-type bitmask() :: array:array() | any().
 
 -record(bloom, {
     e     :: float(),              % error probability
@@ -216,7 +216,7 @@ bitmask_get(I, BM) ->
         dense_bitmap     -> hanoidb_dense_bitmap:member(I, BM)
     end.
 
--spec as_array(bitmask()) -> array().
+-spec as_array(bitmask()) -> array:array().
 as_array(BM) ->
     case array:is_array(BM) of
         true -> BM
@@ -225,7 +225,7 @@ as_array(BM) ->
 %%%========== Bitarray representation - suitable for sparse arrays ==========
 bitarray_new(N) -> array:new((N-1) div ?W + 1, {default, 0}).
 
--spec bitarray_set( non_neg_integer(), array() ) -> array().
+-spec bitarray_set( non_neg_integer(), array:array() ) -> array:array().
 bitarray_set(I, A1) ->
     A = as_array(A1),
     AI = I div ?W,
@@ -235,7 +235,7 @@ bitarray_set(I, A1) ->
        true -> array:set(AI, V1, A)
     end.
 
--spec bitarray_get( non_neg_integer(), array() ) -> boolean().
+-spec bitarray_get( non_neg_integer(), array:array() ) -> boolean().
 bitarray_get(I, A) ->
     AI = I div ?W,
     V = array:get(AI, A),
