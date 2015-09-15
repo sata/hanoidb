@@ -24,7 +24,7 @@
 
 -export([send_call/2, receive_reply/1, send_reply/2, call/2, call/3, cast/2]).
 
--include("include/plain_rpc.hrl").
+-include("plain_rpc.hrl").
 
 
 send_call(PID, Request) ->

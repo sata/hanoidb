@@ -1,0 +1,348 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+add	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^add(Elem, #bloom{mb=Mb} = B) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+add	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^add(Elem, #sbf{size=Size, r=R, s=S, b=[H|T]=Bs}=Sbf) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+add	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^add(Key, Value, Expiry, Nursery, Top) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+add	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^add(Key, Value, Nursery, Top) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+all_set	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^all_set(Mask, I1, I, [H|T]) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+all_set	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^all_set(_Mask, _I1, _I, []) -> true;$/;"	f	language:Erlang	module:hanoidb_bloom
+ASSERT_WHEN	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^-define(ASSERT_WHEN(X), when X).$/;"	d	language:Erlang
+as_array	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^as_array(BM) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+await_incremental_merge	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^await_incremental_merge(Ref) ->$/;"	f	language:Erlang	module:hanoidb_level
+begin_incremental_merge	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^begin_incremental_merge(Ref, StepSize) ->$/;"	f	language:Erlang	module:hanoidb_level
+begin_merge	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^begin_merge(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+binary_encode_kv	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^binary_encode_kv({Key, ?TOMBSTONE}) ->$/;"	f	language:Erlang	module:hanoidb_util
+binary_encode_kv	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^binary_encode_kv({Key, Value}) when is_binary(Value)->$/;"	f	language:Erlang	module:hanoidb_util
+binary_encode_kv	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^binary_encode_kv({Key, {?TOMBSTONE, TStamp}}) ->$/;"	f	language:Erlang	module:hanoidb_util
+binary_encode_kv	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^binary_encode_kv({Key, {Pos, Len}}) when Len < 16#ffffffff ->$/;"	f	language:Erlang	module:hanoidb_util
+binary_encode_kv	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^binary_encode_kv({Key, {Value, TStamp}}) when is_binary(Value) ->$/;"	f	language:Erlang	module:hanoidb_util
+binary_encode_kv	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^binary_encode_kv({Key, {Value,infinity}}) ->$/;"	f	language:Erlang	module:hanoidb_util
+bin_to_bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bin_to_bloom(Binary, ebloom) ->$/;"	f	language:Erlang	module:hanoidb_util
+bin_to_bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bin_to_bloom(Binary, sbloom) ->$/;"	f	language:Erlang	module:hanoidb_util
+bin_to_bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bin_to_bloom(Blob) ->$/;"	f	language:Erlang	module:hanoidb_util
+bin_to_bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bin_to_bloom(GZiped  = <<16#1F, 16#8B, _\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+bin_to_bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bin_to_bloom(TermBin = <<131, _\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+BISECT_ENCODED	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-define(BISECT_ENCODED,  126).$/;"	d	language:Erlang
+bitarray_get	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bitarray_get(I, A) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+bitarray_new	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bitarray_new(N) -> array:new((N-1) div ?W + 1, {default, 0}).$/;"	f	language:Erlang	module:hanoidb_bloom
+bitarray_set	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bitarray_set(I, A1) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+bitmask_build	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bitmask_build(BM) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+bitmask_get	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bitmask_get(I, BM) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+bitmask_new	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bitmask_new(LogN) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+bitmask_set	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bitmask_set(I, BM) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+blocking_range	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^blocking_range(Ref, FoldWorkerPID, Range) ->$/;"	f	language:Erlang	module:hanoidb_level
+bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^-record(bloom, {$/;"	r	language:Erlang
+bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bloom(Mode, N, E) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bloom(N) -> bloom(N, 0.001).$/;"	f	language:Erlang	module:hanoidb_bloom
+bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bloom(N, E) when is_number(N), N > 0,$/;"	f	language:Erlang	module:hanoidb_bloom
+bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bloom(N, E) when is_number(N), N >= 0,$/;"	f	language:Erlang	module:hanoidb_bloom
+bloom_build	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bloom_build(Bloom=#bloom{a=Bitmasks}) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+bloom_build	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^bloom_build(Sbf=#sbf{b=Blooms}) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+bloom_contains	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_contains({ebloom, Bloom}, Key) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_contains	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_contains({sbloom, Bloom}, Key) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_insert	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_insert({ebloom, Bloom}, Key) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_insert	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_insert({sbloom, Bloom}, Key) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_new	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_new(Size, ebloom) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_new	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_new(Size, sbloom) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_to_bin	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_to_bin({ebloom, Bloom}) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_to_bin	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_to_bin({sbloom, Bloom}) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_type	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_type({ebloom, _}) ->$/;"	f	language:Erlang	module:hanoidb_util
+bloom_type	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^bloom_type({sbloom, _}) ->$/;"	f	language:Erlang	module:hanoidb_util
+call	/home/daniil/projects/work/fl/hanoidb/src/plain_rpc.erl	/^call(PID,Request) ->$/;"	f	language:Erlang	module:plain_rpc
+call	/home/daniil/projects/work/fl/hanoidb/src/plain_rpc.erl	/^call(PID,Request,Timeout) ->$/;"	f	language:Erlang	module:plain_rpc
+capacity	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^capacity(#bloom{n=N}) -> N;$/;"	f	language:Erlang	module:hanoidb_bloom
+capacity	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^capacity(#sbf{}) -> infinity.$/;"	f	language:Erlang	module:hanoidb_bloom
+cast	/home/daniil/projects/work/fl/hanoidb/src/plain_rpc.erl	/^cast(PID, Msg) ->$/;"	f	language:Erlang	module:plain_rpc
+check_begin_merge_then_loop	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^check_begin_merge_then_loop(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+check_begin_merge_then_loop	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^check_begin_merge_then_loop(State=#state{a=IXA, b=IXB, merge_pid=undefined})$/;"	f	language:Erlang	module:hanoidb_level
+check_begin_merge_then_loop0	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^check_begin_merge_then_loop0(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+check_begin_merge_then_loop0	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^check_begin_merge_then_loop0(State=#state{a=IXA, b=IXB, merge_pid=undefined})$/;"	f	language:Erlang	module:hanoidb_level
+close	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^close(Ref) ->$/;"	f	language:Erlang	module:hanoidb
+close	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^close(Ref) ->$/;"	f	language:Erlang	module:hanoidb_level
+close	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^close(#index{file=File}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+close	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^close(#index{file=undefined}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+close_and_delete_a_and_b	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^close_and_delete_a_and_b(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+close_if_defined	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^close_if_defined(BT)        -> hanoidb_reader:close(BT).$/;"	f	language:Erlang	module:hanoidb_level
+close_if_defined	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^close_if_defined(undefined) -> ok;$/;"	f	language:Erlang	module:hanoidb_level
+code_change	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^code_change(_OldVsn, State, _Extra) ->$/;"	f	language:Erlang	module:hanoidb
+code_change	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^code_change(_OldVsn, _State, _Extra) ->$/;"	f	language:Erlang	module:hanoidb_level
+compress	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^compress(gzip, Bin) ->$/;"	f	language:Erlang	module:hanoidb_util
+compress	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^compress(lz4, Bin) ->$/;"	f	language:Erlang	module:hanoidb_util
+compress	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^compress(none, Bin) ->$/;"	f	language:Erlang	module:hanoidb_util
+compress	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^compress(snappy, Bin) ->$/;"	f	language:Erlang	module:hanoidb_util
+crc_encapsulate	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^crc_encapsulate(Blob) ->$/;"	f	language:Erlang	module:hanoidb_util
+crc_encapsulate_kv_entry	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^crc_encapsulate_kv_entry(Key, ?TOMBSTONE) ->$/;"	f	language:Erlang	module:hanoidb_util
+crc_encapsulate_kv_entry	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^crc_encapsulate_kv_entry(Key, Value) when is_binary(Value) ->$/;"	f	language:Erlang	module:hanoidb_util
+crc_encapsulate_kv_entry	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^crc_encapsulate_kv_entry(Key, {?TOMBSTONE, TStamp}) -> %$/;"	f	language:Erlang	module:hanoidb_util
+crc_encapsulate_kv_entry	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^crc_encapsulate_kv_entry(Key, {Pos,Len}) when Len < 16#ffffffff ->$/;"	f	language:Erlang	module:hanoidb_util
+crc_encapsulate_kv_entry	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^crc_encapsulate_kv_entry(Key, {Value, infinity}) ->$/;"	f	language:Erlang	module:hanoidb_util
+crc_encapsulate_kv_entry	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^crc_encapsulate_kv_entry(Key, {Value, TStamp}) when is_binary(Value) ->$/;"	f	language:Erlang	module:hanoidb_util
+crc_encapsulate_transaction	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^crc_encapsulate_transaction(TransactionSpec, Expiry) ->$/;"	f	language:Erlang	module:hanoidb_util
+CRC_ENCODED	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-define(CRC_ENCODED,     127).$/;"	d	language:Erlang
+data_vsn	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^data_vsn() ->$/;"	f	language:Erlang	module:hanoidb_level
+debug_log	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^debug_log(State,Fmt,Args) ->$/;"	f	language:Erlang	module:hanoidb_level
+decode	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^decode(Bin) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+decode_binary_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^decode_binary_value(<<?TAG_DELETED2, TStamp:32>>) ->$/;"	f	language:Erlang	module:hanoidb_reader
+decode_binary_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^decode_binary_value(<<?TAG_DELETED>>) ->$/;"	f	language:Erlang	module:hanoidb_reader
+decode_binary_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^decode_binary_value(<<?TAG_KV_DATA, Value\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_reader
+decode_binary_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^decode_binary_value(<<?TAG_KV_DATA2, TStamp:32, Value\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_reader
+decode_binary_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^decode_binary_value(<<?TAG_POSLEN32, Pos:64, Len:32>>) ->$/;"	f	language:Erlang	module:hanoidb_reader
+decode_crc_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_crc_data(<< BinSize:32\/unsigned, CRC:32\/unsigned, Bin:BinSize\/binary, ?TAG_END, Rest\/binary >>, Broken, Acc) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_crc_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_crc_data(<<>>, BrokenData, Acc) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_crc_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_crc_data(<<>>, [], Acc) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_crc_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_crc_data(Bad, Broken, Acc) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_index_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_index_node(Level, Data) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_data(<<?TAG_DELETED, Key\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_data(<<?TAG_DELETED2, TStamp:32\/unsigned, Key\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_data(<<?TAG_KV_DATA, KLen:32\/unsigned, Key:KLen\/binary, Value\/binary >>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_data(<<?TAG_KV_DATA2, TStamp:32\/unsigned, KLen:32\/unsigned, Key:KLen\/binary, Value\/binary >>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_data(<<?TAG_POSLEN32, Pos:64\/unsigned, Len:32\/unsigned, Key\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_data	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_data(<<?TAG_TRANSACT, Rest\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_list	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_list(<<?BISECT_ENCODED, CRC:32\/unsigned, Binary\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_list	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_list(<<?CRC_ENCODED, Custom\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_list	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_list(<<?ERLANG_ENCODED, _\/binary>>=TermData) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_kv_list	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^decode_kv_list(<<?TAG_END, Custom\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+decode_member_list	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^decode_member_list(BinDict) when is_binary(BinDict) ->$/;"	f	language:Erlang	module:hanoidb_reader
+decode_member_list	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^decode_member_list(List) when is_list(List) ->$/;"	f	language:Erlang	module:hanoidb_reader
+decr	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^decr(N) ->$/;"	f	language:Erlang	module:hanoidb
+decr	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^decr(undefined) ->$/;"	f	language:Erlang	module:hanoidb
+decrement	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^decrement(1) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+decrement	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^decrement(Number) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+decrement	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^decrement(undefined) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+DEFAULT_EXPIRY_SECS	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^-define(DEFAULT_EXPIRY_SECS, 0).$/;"	d	language:Erlang
+delete	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^delete(Ref,Key) when is_binary(Key) ->$/;"	f	language:Erlang	module:hanoidb
+deserialize	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^deserialize({seq_read_file, Index, Position}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+destroy	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^destroy(Ref) ->$/;"	f	language:Erlang	module:hanoidb
+destroy	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^destroy(Ref) ->$/;"	f	language:Erlang	module:hanoidb_level
+destroy	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^destroy(#nursery{ dir=Dir, log_file=LogFile }) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+destroy	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^destroy(#index{file=File, name=Name}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+destroy_if_defined	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^destroy_if_defined(BT)        -> hanoidb_reader:destroy(BT).$/;"	f	language:Erlang	module:hanoidb_level
+destroy_if_defined	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^destroy_if_defined(undefined) -> ok;$/;"	f	language:Erlang	module:hanoidb_level
+do_add	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^do_add(Nursery, Key, Value, infinity, Top) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+do_add	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^do_add(Nursery=#nursery{log_file=File, cache=Cache, total_size=TotalSize, count=Count, config=Config}, Key, Value, KeyExpiryTime, Top) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+do_inc_merge	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^do_inc_merge(Nursery=#nursery{ step=Step, merge_done=Done, min_level=MinLevel }, N, TopLevel) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+do_level_fold	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^do_level_fold(#nursery{cache=Cache}, FoldWorkerPID, KeyRange) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+do_lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^do_lookup(Key, [BT|Rest]) ->$/;"	f	language:Erlang	module:hanoidb_level
+do_lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^do_lookup(Key, [undefined|Rest]) ->$/;"	f	language:Erlang	module:hanoidb_level
+do_lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^do_lookup(_Key, [Pid]) when is_pid(Pid) ->$/;"	f	language:Erlang	module:hanoidb_level
+do_lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^do_lookup(_Key, []) ->$/;"	f	language:Erlang	module:hanoidb_level
+do_merge	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^do_merge(TopLevel, Inc, N, MinLevel) ->$/;"	f	language:Erlang	module:hanoidb
+do_merge	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^do_merge(TopLevel, _Inc, N, _MinLevel) when N =< 0 ->$/;"	f	language:Erlang	module:hanoidb
+do_put	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^do_put(Key, Value, Expiry, State=#state{ nursery=Nursery, top=Top }) when Nursery =\/= undefined ->$/;"	f	language:Erlang	module:hanoidb
+do_range_fold	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^do_range_fold(BT, WorkerPID, SelfOrRef, Range) ->$/;"	f	language:Erlang	module:hanoidb_level
+do_range_fold2	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^do_range_fold2(BT, WorkerPID, SelfOrRef, Range) ->$/;"	f	language:Erlang	module:hanoidb_level
+do_recover	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^do_recover(Directory, TopLevel, MinLevel, MaxLevel, Config) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+do_step	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^do_step(StepFrom, PreviousWork, StepSize, State) ->$/;"	f	language:Erlang	module:hanoidb_level
+do_sync	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^do_sync(File, Nursery) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+do_transact	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^do_transact(TransactionSpec, State=#state{ nursery=Nursery, top=Top }) ->$/;"	f	language:Erlang	module:hanoidb
+do_transact	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^do_transact([], State) ->$/;"	f	language:Erlang	module:hanoidb
+do_transact	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^do_transact([{delete, Key}], State) ->$/;"	f	language:Erlang	module:hanoidb
+do_transact	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^do_transact([{put, Key, Value}], State) ->$/;"	f	language:Erlang	module:hanoidb
+drain_worker	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^drain_worker(MRef, PID, Value) ->$/;"	f	language:Erlang	module:hanoidb
+encode	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^encode(Bloom) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+encode_index_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^encode_index_node(KVList, Method) ->$/;"	f	language:Erlang	module:hanoidb_util
+ensure_expiry	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^ensure_expiry(Opts) ->$/;"	f	language:Erlang	module:hanoidb_util
+ensure_space	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^ensure_space(Nursery, NeededRoom, Top) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+ensure_started	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^ensure_started(Application) ->$/;"	f	language:Erlang	module:hanoidb
+ERLANG_ENCODED	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-define(ERLANG_ENCODED,  131).$/;"	d	language:Erlang
+estimate_node_size_increment	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^estimate_node_size_increment(_KVList, Key, Value)$/;"	f	language:Erlang	module:hanoidb_util
+estimate_node_size_increment	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^estimate_node_size_increment(_KVList, Key, Value)$/;"	f	language:Erlang	module:hanoidb_util
+estimate_node_size_increment	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^estimate_node_size_increment(_KVList, Key, Value)$/;"	f	language:Erlang	module:hanoidb_util
+estimate_node_size_increment	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^estimate_node_size_increment(_KVList, Key, Value)$/;"	f	language:Erlang	module:hanoidb_util
+estimate_node_size_increment	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^estimate_node_size_increment(_KVList, Key, {Value, _TStamp})$/;"	f	language:Erlang	module:hanoidb_util
+estimate_node_size_increment	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^estimate_node_size_increment(_KVList, Key, {Value, _TStamp})$/;"	f	language:Erlang	module:hanoidb_util
+estimate_node_size_increment	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^estimate_node_size_increment(_KVList, Key, {Value, _TStamp})$/;"	f	language:Erlang	module:hanoidb_util
+estimate_node_size_increment	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^estimate_node_size_increment(_KVList, Key, {Value, _TStamp})$/;"	f	language:Erlang	module:hanoidb_util
+expiry_time	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^expiry_time(ExpirySecs) when ExpirySecs > 0 ->$/;"	f	language:Erlang	module:hanoidb_util
+filename	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^filename(PFX, State) ->$/;"	f	language:Erlang	module:hanoidb_level
+FILE_ENCODING	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-define(FILE_ENCODING, bisect).$/;"	d	language:Erlang
+file_exists	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^file_exists(FileName) ->$/;"	f	language:Erlang	module:hanoidb_util
+fill_cache	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^fill_cache(Transactions, Cache)$/;"	f	language:Erlang	module:hanoidb_nursery
+fill_cache	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^fill_cache([], Cache) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+fill_cache	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^fill_cache({Key, Value}, Cache)$/;"	f	language:Erlang	module:hanoidb_nursery
+fill_cache	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^fill_cache({Key, {Value, _TStamp}=Entry}, Cache)$/;"	f	language:Erlang	module:hanoidb_nursery
+find_1	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_1(K, [_|T]) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_1	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_1(K, [{K1,V},{K2,_}|_]) when K >= K1, K < K2 ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_1	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_1(K, [{K1,V}]) when K >= K1 ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_1	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_1(_, _) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_in_leaf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_in_leaf(Key,Bin) when is_binary(Bin) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_in_leaf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_in_leaf(Key,List) when is_list(List) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_leaf_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_leaf_node(File,FromKey,#node{members=Members,level=N},_) when is_binary(Members) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_leaf_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_leaf_node(File,FromKey,#node{members=Members,level=N},_) when is_list(Members) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_leaf_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_leaf_node(_,_,none,_) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_leaf_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_leaf_node(_File,_FromKey,#node{level=0},Pos) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_next_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^find_next_value(<<>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+find_next_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^find_next_value(Bin) ->$/;"	f	language:Erlang	module:hanoidb_util
+find_start	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_start(K, KVs) ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_start	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_start(K, [{_,V},{K2,_}|_]) when K < K2 ->$/;"	f	language:Erlang	module:hanoidb_reader
+find_start	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^find_start(_, [{_,{_,_}=V}]) ->$/;"	f	language:Erlang	module:hanoidb_reader
+finish	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^finish(#nursery{ dir=Dir, cache=Cache, log_file=LogFile, merge_done=DoneMerge,$/;"	f	language:Erlang	module:hanoidb_nursery
+first_key	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^first_key(#node{members=Dict}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+first_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^first_node(#index{file=File}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+flush	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^flush(Nursery=#nursery{ dir=Dir, min_level=MinLevel, max_level=MaxLevel, config=Config }, Top) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+fold	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^fold(Ref,Fun,Acc0) ->$/;"	f	language:Erlang	module:hanoidb
+fold	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold(Fun, Acc0, #index{file=File}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+fold0	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold0(File,Fun,#node{level=0, members=BinPage},Acc0) when is_binary(BinPage) ->$/;"	f	language:Erlang	module:hanoidb_reader
+fold0	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold0(File,Fun,#node{level=0, members=List},Acc0) when is_list(List) ->$/;"	f	language:Erlang	module:hanoidb_reader
+fold0	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold0(File,Fun,_InnerNode,Acc0) ->$/;"	f	language:Erlang	module:hanoidb_reader
+fold1	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold1(File,Fun,Acc0) ->$/;"	f	language:Erlang	module:hanoidb_reader
+FOLD_CHUNK_SIZE	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^-define(FOLD_CHUNK_SIZE, 100).$/;"	d	language:Erlang
+fold_range	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^fold_range(Ref,Fun,Acc0,#key_range{limit=Limit}=Range) ->$/;"	f	language:Erlang	module:hanoidb
+fold_until_stop	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold_until_stop(Fun,Acc,List) when is_list(List) ->$/;"	f	language:Erlang	module:hanoidb_reader
+fold_until_stop	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold_until_stop(Fun,Acc0,Bin) when is_binary(Bin) ->$/;"	f	language:Erlang	module:hanoidb_reader
+fold_until_stop2	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold_until_stop2(Fun,{continue, Acc},[H|T]) ->$/;"	f	language:Erlang	module:hanoidb_reader
+fold_until_stop2	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold_until_stop2(_Fun,{continue, Acc},[]) ->$/;"	f	language:Erlang	module:hanoidb_reader
+fold_until_stop2	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^fold_until_stop2(_Fun,{stop,Result},_) ->$/;"	f	language:Erlang	module:hanoidb_reader
+get	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^get(Ref,Key) when is_binary(Key) ->$/;"	f	language:Erlang	module:hanoidb
+get_opt	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^get_opt(Key, Opts) ->$/;"	f	language:Erlang	module:hanoidb
+get_opt	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^get_opt(Key, Opts, Default) ->$/;"	f	language:Erlang	module:hanoidb
+get_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^get_value(Value) when Value =:= ?TOMBSTONE; is_binary(Value) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+get_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^get_value({Value, TStamp}) when is_integer(TStamp); TStamp =:= infinity ->$/;"	f	language:Erlang	module:hanoidb_nursery
+get_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^get_value(Value) ->$/;"	f	language:Erlang	module:hanoidb_reader
+get_value	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^get_value({Value, _TStamp}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+GZIP_COMPRESSION	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-define(GZIP_COMPRESSION, 2).$/;"	d	language:Erlang
+g_keys	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^g_keys() ->$/;"	f	language:Erlang	module:hanoidb_bloom
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call(close, _From, State=#state{ nursery=Nursery, top=Top, dir=Dir, max_level=MaxLevel, opt=Config }) ->$/;"	f	language:Erlang	module:hanoidb
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call(close, _From, State=#state{ nursery=undefined }) ->$/;"	f	language:Erlang	module:hanoidb
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call(destroy, _From, State=#state{top=Top, nursery=Nursery }) ->$/;"	f	language:Erlang	module:hanoidb
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call({blocking_range, FoldWorkerPID, Range}, _From, State=#state{ top=TopLevel, nursery=Nursery }) ->$/;"	f	language:Erlang	module:hanoidb
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call({delete, Key}, _From, State) when is_binary(Key) ->$/;"	f	language:Erlang	module:hanoidb
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call({get, Key}, From, State=#state{ top=Top, nursery=Nursery } ) when is_binary(Key) ->$/;"	f	language:Erlang	module:hanoidb
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call({put, Key, Value, Expiry}, _From, State) when is_binary(Key), is_binary(Value) ->$/;"	f	language:Erlang	module:hanoidb
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call({snapshot_range, FoldWorkerPID, Range}, _From, State=#state{ top=TopLevel, nursery=Nursery }) ->$/;"	f	language:Erlang	module:hanoidb
+handle_call	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_call({transact, TransactionSpec}, _From, State) ->$/;"	f	language:Erlang	module:hanoidb
+handle_cast	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_cast(Info,State) ->$/;"	f	language:Erlang	module:hanoidb
+handle_info	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_info(Info,State) ->$/;"	f	language:Erlang	module:hanoidb
+handle_info	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^handle_info({bottom_level, N}, #state{ nursery=Nursery, top=TopLevel }=State)$/;"	f	language:Erlang	module:hanoidb
+hanoidb	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^-module(hanoidb).$/;"	m	language:Erlang
+hanoidb_bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^-module(hanoidb_bloom).$/;"	m	language:Erlang
+hanoidb_level	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^-module(hanoidb_level).$/;"	m	language:Erlang
+hanoidb_nursery	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^-module(hanoidb_nursery).$/;"	m	language:Erlang
+hanoidb_reader	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^-module(hanoidb_reader).$/;"	m	language:Erlang
+hanoidb_util	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-module(hanoidb_util).$/;"	m	language:Erlang
+hash_add	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^hash_add(Hashes, #bloom{mb=Mb, a=A, size=Size} = B) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+hash_member	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^hash_member(Hashes, #bloom{mb=Mb, a=A}) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+hash_member	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^hash_member(Hashes, #sbf{b=B}) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+has_expired	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^has_expired(Expiration) when Expiration > 0 ->$/;"	f	language:Erlang	module:hanoidb_util
+has_expired	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^has_expired(infinity) ->$/;"	f	language:Erlang	module:hanoidb_util
+has_room	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^has_room(#nursery{ count=Count, min_level=MinLevel }, N) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+INC_MERGE_STEP	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^-define(INC_MERGE_STEP, ?BTREE_SIZE(MinLevel) div 2).$/;"	d	language:Erlang
+index	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^-record(index, {file       :: file:io_device(),$/;"	r	language:Erlang
+index_file_name	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^index_file_name(Name) ->$/;"	f	language:Erlang	module:hanoidb_util
+init	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^init([Dir, Opts0]) ->$/;"	f	language:Erlang	module:hanoidb
+initialize	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^initialize(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+initialize2	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^initialize2(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+init_state	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^init_state(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+inject	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^inject(Ref, FileName) ->$/;"	f	language:Erlang	module:hanoidb_level
+is_expired	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^is_expired(?TOMBSTONE) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+is_expired	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^is_expired(Bin) when is_binary(Bin) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+is_expired	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^is_expired({_Value, TStamp}) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+is_expired	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^is_expired(?TOMBSTONE) ->$/;"	f	language:Erlang	module:hanoidb_reader
+is_expired	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^is_expired(Bin) when is_binary(Bin) ->$/;"	f	language:Erlang	module:hanoidb_reader
+is_expired	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^is_expired({_Value, TStamp}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+level	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^level(Ref) ->$/;"	f	language:Erlang	module:hanoidb_level
+log	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^-define(log(Fmt,Args),io:format(user,Fmt,Args)).$/;"	d	language:Erlang
+log	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^-define(log(Fmt,Args),ok).$/;"	d	language:Erlang
+log	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^-define(log(Fmt,Args), debug_log(State,Fmt,Args)).$/;"	d	language:Erlang
+log	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^-define(log(Fmt,Args),ok).$/;"	d	language:Erlang
+log2	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^log2(X) -> log(X) \/ log(2).$/;"	f	language:Erlang	module:hanoidb_bloom
+LOGFILENAME	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^-define(LOGFILENAME(Dir), filename:join(Dir, "nursery.log")).$/;"	d	language:Erlang
+lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^lookup(Ref,Key) when is_binary(Key) ->$/;"	f	language:Erlang	module:hanoidb
+lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^lookup(Ref, Key) ->$/;"	f	language:Erlang	module:hanoidb_level
+lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^lookup(Ref, Key, ReplyFun) ->$/;"	f	language:Erlang	module:hanoidb_level
+lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^lookup(Key, #nursery{cache=Cache}) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+lookup	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^lookup(#index{file=File, root=Node, bloom=Bloom}, Key) ->$/;"	f	language:Erlang	module:hanoidb_reader
+lookup_in_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^lookup_in_node(File,#node{members=Members},Key) ->$/;"	f	language:Erlang	module:hanoidb_reader
+lookup_in_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^lookup_in_node(File,#node{members=Members},Key) when is_binary(Members) ->$/;"	f	language:Erlang	module:hanoidb_reader
+lookup_in_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^lookup_in_node(_File,#node{level=0,members=Members}, Key) ->$/;"	f	language:Erlang	module:hanoidb_reader
+lookup_in_node2	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^lookup_in_node2(File,#node{members=Members},Key) ->$/;"	f	language:Erlang	module:hanoidb_reader
+lookup_in_node2	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^lookup_in_node2(_File,#node{level=0,members=Members},Key) ->$/;"	f	language:Erlang	module:hanoidb_reader
+LZ4_COMPRESSION	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-define(LZ4_COMPRESSION, 3).$/;"	d	language:Erlang
+main_loop	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^main_loop(State = #state{ next=Next }) ->$/;"	f	language:Erlang	module:hanoidb_level
+make_hashes	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^make_hashes(Mb, E) when Mb =< 16 ->$/;"	f	language:Erlang	module:hanoidb_bloom
+make_hashes	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^make_hashes(Mb, E) when Mb =< 32 ->$/;"	f	language:Erlang	module:hanoidb_bloom
+make_indexes	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^make_indexes(Mask, H0) -> masked_pair(Mask, H0 bsr 16, H0).$/;"	f	language:Erlang	module:hanoidb_bloom
+make_indexes	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^make_indexes(Mask, {H0, H1}) when Mask > 1 bsl 16 -> masked_pair(Mask, H0, H1);$/;"	f	language:Erlang	module:hanoidb_bloom
+make_indexes	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^make_indexes(Mask, {H0, _}) -> make_indexes(Mask, H0);$/;"	f	language:Erlang	module:hanoidb_bloom
+masked_pair	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^masked_pair(Mask, X, Y) -> {X band Mask, Y band Mask}.$/;"	f	language:Erlang	module:hanoidb_bloom
+member	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^member(Elem, #bloom{mb=Mb}=B) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+member	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^member(Elem, #sbf{b=[H|_]}=Sbf) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+MERGE_TIMEOUT	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^-define(MERGE_TIMEOUT,1000).$/;"	d	language:Erlang
+new	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^new(Directory, MinLevel, MaxLevel, Config) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+next_leaf_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^next_leaf_node(File) ->$/;"	f	language:Erlang	module:hanoidb_reader
+next_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^next_node(#index{file=File}=_Index) ->$/;"	f	language:Erlang	module:hanoidb_reader
+node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^-record(node, {level       :: non_neg_integer(),$/;"	r	language:Erlang
+NO_COMPRESSION	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-define(NO_COMPRESSION, 0).$/;"	d	language:Erlang
+open	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^open(Dir) ->$/;"	f	language:Erlang	module:hanoidb
+open	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^open(Dir, Opts) ->$/;"	f	language:Erlang	module:hanoidb
+open	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^open(Name, Dir, Opts) ->$/;"	f	language:Erlang	module:hanoidb
+open	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^open(Dir,Level,Next,Opts,Owner) when Level>0 ->$/;"	f	language:Erlang	module:hanoidb_level
+open	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^open(Name) ->$/;"	f	language:Erlang	module:hanoidb_reader
+open	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^open(Name, Config) ->$/;"	f	language:Erlang	module:hanoidb_reader
+open_levels	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^open_levels(Dir, Options) ->$/;"	f	language:Erlang	module:hanoidb
+open_link	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^open_link(Dir) ->$/;"	f	language:Erlang	module:hanoidb
+open_link	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^open_link(Dir, Opts) ->$/;"	f	language:Erlang	module:hanoidb
+open_link	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^open_link(Name, Dir, Opts) ->$/;"	f	language:Erlang	module:hanoidb
+parse_level	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^parse_level(FileName) ->$/;"	f	language:Erlang	module:hanoidb
+plain_rpc	/home/daniil/projects/work/fl/hanoidb/src/plain_rpc.erl	/^-module(plain_rpc).$/;"	m	language:Erlang
+prop_bloom	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^prop_bloom() ->$/;"	f	language:Erlang	module:hanoidb_bloom
+prop_bloom_test_	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^prop_bloom_test_() ->$/;"	f	language:Erlang	module:hanoidb_bloom
+put	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^put(Ref,Key,Value) when is_binary(Key), is_binary(Value) ->$/;"	f	language:Erlang	module:hanoidb
+put	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^put(Ref,Key,Value,Expiry) when is_binary(Key), is_binary(Value) ->$/;"	f	language:Erlang	module:hanoidb
+put	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^put(Ref,Key,Value,infinity) when is_binary(Key), is_binary(Value) ->$/;"	f	language:Erlang	module:hanoidb
+raise	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^raise({'EXIT', Class, Exception, Trace}) ->$/;"	f	language:Erlang	module:hanoidb
+range_fold	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^range_fold(Fun, Acc0, #index{file=File,root=Root}, Range) ->$/;"	f	language:Erlang	module:hanoidb_reader
+range_fold_from_here	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^range_fold_from_here(Fun, Acc0, File, Range, N0) ->$/;"	f	language:Erlang	module:hanoidb_reader
+range_fold_from_here	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^range_fold_from_here(Fun, Acc0, File, Range, undefined) ->$/;"	f	language:Erlang	module:hanoidb_reader
+read_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^read_node(File) ->$/;"	f	language:Erlang	module:hanoidb_reader
+read_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^read_node(File, Pos) ->$/;"	f	language:Erlang	module:hanoidb_reader
+read_node	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^read_node(File, {Pos, Size}) ->$/;"	f	language:Erlang	module:hanoidb_reader
+read_nursery_from_log	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^read_nursery_from_log(Directory, MinLevel, MaxLevel, Config) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+receive_fold_range	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^receive_fold_range(MRef,PID,Fun,Acc0, Limit) ->$/;"	f	language:Erlang	module:hanoidb
+receive_fold_range	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^receive_fold_range(MRef,PID,_,Acc0, 0) ->$/;"	f	language:Erlang	module:hanoidb
+receive_reply	/home/daniil/projects/work/fl/hanoidb/src/plain_rpc.erl	/^receive_reply(MRef) ->$/;"	f	language:Erlang	module:plain_rpc
+recover	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^recover(Directory, TopLevel, MinLevel, MaxLevel, Config)$/;"	f	language:Erlang	module:hanoidb_nursery
+recursive_find	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^recursive_find(File,FromKey,N,ChildPos) when N>1 ->$/;"	f	language:Erlang	module:hanoidb_reader
+recursive_find	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^recursive_find(_File,_FromKey,1,ChildPos) ->$/;"	f	language:Erlang	module:hanoidb_reader
+reply_step_ok	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^reply_step_ok(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+restart_merge_then_loop	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^restart_merge_then_loop(State, Reason) ->$/;"	f	language:Erlang	module:hanoidb_level
+sbf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^-record(sbf, {$/;"	r	language:Erlang
+sbf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^sbf(N) -> sbf(N, 0.001).$/;"	f	language:Erlang	module:hanoidb_bloom
+sbf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^sbf(N, E) -> sbf(N, E, 1).$/;"	f	language:Erlang	module:hanoidb_bloom
+sbf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^sbf(N, E, 1) -> sbf(N, E, 1, 0.85);$/;"	f	language:Erlang	module:hanoidb_bloom
+sbf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^sbf(N, E, 2) -> sbf(N, E, 2, 0.75);$/;"	f	language:Erlang	module:hanoidb_bloom
+sbf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^sbf(N, E, 3) -> sbf(N, E, 3, 0.65).$/;"	f	language:Erlang	module:hanoidb_bloom
+sbf	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^sbf(N, E, S, R) when is_number(N), N > 0,$/;"	f	language:Erlang	module:hanoidb_bloom
+send	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^send(WorkerPID,Ref,ReverseKVs) ->$/;"	f	language:Erlang	module:hanoidb_level
+send	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^send(_,_,[]) ->$/;"	f	language:Erlang	module:hanoidb_level
+send_call	/home/daniil/projects/work/fl/hanoidb/src/plain_rpc.erl	/^send_call(PID, Request) ->$/;"	f	language:Erlang	module:plain_rpc
+send_reply	/home/daniil/projects/work/fl/hanoidb/src/plain_rpc.erl	/^send_reply({PID,Ref}, Reply) ->$/;"	f	language:Erlang	module:plain_rpc
+serialize	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_reader.erl	/^serialize(#index{file=File, bloom=undefined }=Index) ->$/;"	f	language:Erlang	module:hanoidb_reader
+set_bits	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^set_bits(Mask, I1, I, [H|T], Acc) ->$/;"	f	language:Erlang	module:hanoidb_bloom
+set_bits	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^set_bits(_Mask, _I1, _I, [], Acc) -> lists:reverse(Acc);$/;"	f	language:Erlang	module:hanoidb_bloom
+set_max_level	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^set_max_level(Ref, LevelNo) ->$/;"	f	language:Erlang	module:hanoidb_level
+set_max_level	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^set_max_level(Nursery = #nursery{}, MaxLevel) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+size	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^size(#bloom{size=Size}) -> Size;$/;"	f	language:Erlang	module:hanoidb_bloom
+size	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^size(#sbf{size=Size}) -> Size.$/;"	f	language:Erlang	module:hanoidb_bloom
+SNAPPY_COMPRESSION	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^-define(SNAPPY_COMPRESSION, 1).$/;"	d	language:Erlang
+snapshot_range	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^snapshot_range(Ref, FoldWorkerPID, Range) ->$/;"	f	language:Erlang	module:hanoidb_level
+start_app	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^start_app() ->$/;"	f	language:Erlang	module:hanoidb
+start_range_fold	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^start_range_fold(FileName, WorkerPID, Range, State) ->$/;"	f	language:Erlang	module:hanoidb_level
+state	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^-record(state, { top       :: pid(),$/;"	r	language:Erlang
+state	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^-record(state, {$/;"	r	language:Erlang
+stop_if_defined	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^stop_if_defined(MergePid) when is_pid(MergePid) ->$/;"	f	language:Erlang	module:hanoidb_level
+stop_if_defined	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^stop_if_defined(undefined) -> ok;$/;"	f	language:Erlang	module:hanoidb_level
+terminate	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^terminate(normal, _State) ->$/;"	f	language:Erlang	module:hanoidb
+terminate	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^terminate(_Reason, _State) ->$/;"	f	language:Erlang	module:hanoidb
+total_unmerged	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^total_unmerged(State) ->$/;"	f	language:Erlang	module:hanoidb_level
+transact	/home/daniil/projects/work/fl/hanoidb/src/hanoidb.erl	/^transact(Ref, TransactionSpec) ->$/;"	f	language:Erlang	module:hanoidb
+transact	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^transact(Spec, Nursery, Top) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+transact1	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_nursery.erl	/^transact1(Spec, Nursery1=#nursery{ log_file=File, cache=Cache0, total_size=TotalSize, config=Config }, Top) ->$/;"	f	language:Erlang	module:hanoidb_nursery
+tstamp	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^tstamp() ->$/;"	f	language:Erlang	module:hanoidb_util
+uncompress	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^uncompress(<<?GZIP_COMPRESSION, Data\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+uncompress	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^uncompress(<<?LZ4_COMPRESSION, Data\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+uncompress	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^uncompress(<<?NO_COMPRESSION, Data\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+uncompress	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^uncompress(<<?SNAPPY_COMPRESSION, Data\/binary>>) ->$/;"	f	language:Erlang	module:hanoidb_util
+unmerged_count	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_level.erl	/^unmerged_count(Ref) ->$/;"	f	language:Erlang	module:hanoidb_level
+use_compressed	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^use_compressed(UncompressedSize, CompressedSize) when CompressedSize < UncompressedSize ->$/;"	f	language:Erlang	module:hanoidb_util
+use_compressed	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_util.erl	/^use_compressed(_UncompressedSize, _CompressedSize) ->$/;"	f	language:Erlang	module:hanoidb_util
+W	/home/daniil/projects/work/fl/hanoidb/src/hanoidb_bloom.erl	/^-define(W, 27).$/;"	d	language:Erlang

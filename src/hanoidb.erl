@@ -38,9 +38,9 @@
 -export([get_opt/2, get_opt/3]).
 
 -include("hanoidb.hrl").
+-include("include/hanoidb.hrl").
 -include_lib("kernel/include/file.hrl").
--include_lib("include/hanoidb.hrl").
--include_lib("include/plain_rpc.hrl").
+-include_lib("plain_rpc.hrl").
 
 -record(state, { top       :: pid(),
                  nursery   :: #nursery{},

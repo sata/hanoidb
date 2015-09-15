@@ -25,10 +25,10 @@
 -module(hanoidb_level).
 -author('Kresten Krab Thorup <krab@trifork.com>').
 
--include("include/plain_rpc.hrl").
+-include("plain_rpc.hrl").
 
+-include("hanoidb.hrl").
 -include("include/hanoidb.hrl").
--include("src/hanoidb.hrl").
 
 %%
 %% Manages 0..2 of hanoidb index file, and governs all aspects of
