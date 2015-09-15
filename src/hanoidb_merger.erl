@@ -30,8 +30,8 @@
 
 -export([start/6, merge/6]).
 
--include("hanoidb.hrl").
--include("include/plain_rpc.hrl").
+-include("hanoidb_internal.hrl").
+-include("plain_rpc.hrl").
 
 %% A merger which is inactive for this long will sleep which means that it will
 %% close open files, and compress the current bloom filter.

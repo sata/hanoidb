@@ -26,6 +26,7 @@
 -author('Kresten Krab Thorup <krab@trifork.com>').
 
 -include("hanoidb.hrl").
+-include("hanoidb_internal.hrl").
 
 %%
 %% Streaming btree writer. Accepts only monotonically increasing keys for put.

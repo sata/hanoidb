@@ -27,8 +27,8 @@
 
 -include("plain_rpc.hrl").
 
+-include("hanoidb_internal.hrl").
 -include("hanoidb.hrl").
--include("include/hanoidb.hrl").
 
 %%
 %% Manages 0..2 of hanoidb index file, and governs all aspects of

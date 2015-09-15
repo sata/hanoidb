@@ -26,8 +26,8 @@
 -author('Kresten Krab Thorup <krab@trifork.com>').
 
 -include_lib("kernel/include/file.hrl").
+-include("hanoidb_internal.hrl").
 -include("hanoidb.hrl").
--include("include/hanoidb.hrl").
 -include("plain_rpc.hrl").
 
 -define(ASSERT_WHEN(X), when X).

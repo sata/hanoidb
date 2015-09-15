@@ -65,7 +65,7 @@
 -behavior(plain_fsm).
 -export([data_vsn/0, code_change/3]).
 
--include("hanoidb.hrl").
+-include("hanoidb_internal.hrl").
 -include("plain_rpc.hrl").
 
 -record(state, {sendto :: pid(), sendto_ref :: reference()}).

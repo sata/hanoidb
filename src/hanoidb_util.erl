@@ -49,7 +49,7 @@
          , bloom_contains/2
  ]).
 
--include("hanoidb.hrl").
+-include("hanoidb_internal.hrl").
 
 -define(ERLANG_ENCODED,  131).
 -define(CRC_ENCODED,     127).

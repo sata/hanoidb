@@ -28,8 +28,8 @@
 -export([new/4, recover/5, finish/2, lookup/2, add/4, add/5]).
 -export([do_level_fold/3, set_max_level/2, transact/3, destroy/1]).
 
+-include("hanoidb_internal.hrl").
 -include("hanoidb.hrl").
--include("include/hanoidb.hrl").
 -include_lib("kernel/include/file.hrl").
 
 -spec new(string(), integer(), integer(), [_]) -> {ok, #nursery{}} | {error, term()}.

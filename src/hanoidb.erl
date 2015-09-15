@@ -37,8 +37,8 @@
 
 -export([get_opt/2, get_opt/3]).
 
+-include("hanoidb_internal.hrl").
 -include("hanoidb.hrl").
--include("include/hanoidb.hrl").
 -include_lib("kernel/include/file.hrl").
 -include_lib("plain_rpc.hrl").
 
