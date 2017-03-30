@@ -4,7 +4,7 @@
   0},
  {<<"edown">>,
   {git,"https://github.com/uwiger/edown.git",
-       {ref,"8d7e7cac24fd9c3137cbd03fe36ce98eeff2ccac"}},
+       {ref,"754be25f71a04099c83f3ffdff268e70beeb0021"}},
   1},
  {<<"goldrush">>,
   {git,"git://github.com/DeadZen/goldrush.git",
@@ -32,5 +32,5 @@
   0},
  {<<"triq">>,
   {git,"git://github.com/krestenkrab/triq",
-       {ref,"2fe1529bc1460e0a8cd356ef7a8fda9e43120445"}},
+       {ref,"c7306b8eaea133d52140cb828817efb5e50a3d52"}},
   0}].
