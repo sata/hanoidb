@@ -220,15 +220,11 @@ bitmask_get(I, BM) ->
         dense_bitmap     -> hanoidb_dense_bitmap:member(I, BM)
     end.
 
-<<<<<<< HEAD
--spec as_array(bitmask()) -> array:array().
-=======
 -ifdef(pre18).
 -spec as_array(bitmask()) -> array().
 -else.
 -spec as_array(bitmask()) -> arrays:array().
 -endif.
->>>>>>> 68333fa51a6fdf27834fc84f42d4421f9627e3b7
 as_array(BM) ->
     case array:is_array(BM) of
         true -> BM
@@ -237,16 +233,12 @@ as_array(BM) ->
 %%%========== Bitarray representation - suitable for sparse arrays ==========
 bitarray_new(N) -> array:new((N-1) div ?W + 1, {default, 0}).
 
-<<<<<<< HEAD
--spec bitarray_set( non_neg_integer(), array:array() ) -> array:array().
-=======
 -ifdef(pre18).
 -spec bitarray_set( non_neg_integer(), array() ) -> array().
 -else.
 -spec bitarray_set( non_neg_integer(), arrays:array() ) -> arrays:array().
 -endif.
 
->>>>>>> 68333fa51a6fdf27834fc84f42d4421f9627e3b7
 bitarray_set(I, A1) ->
     A = as_array(A1),
     AI = I div ?W,
@@ -256,15 +248,11 @@ bitarray_set(I, A1) ->
        true -> array:set(AI, V1, A)
     end.
 
-<<<<<<< HEAD
--spec bitarray_get( non_neg_integer(), array:array() ) -> boolean().
-=======
 -ifdef(pre18).
 -spec bitarray_get( non_neg_integer(), array() ) -> boolean().
 -else.
 -spec bitarray_get( non_neg_integer(), arrays:array() ) -> boolean().
 -endif.
->>>>>>> 68333fa51a6fdf27834fc84f42d4421f9627e3b7
 bitarray_get(I, A) ->
     AI = I div ?W,
     V = array:get(AI, A),
