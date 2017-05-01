@@ -30,7 +30,11 @@
   {applications, [
                   kernel,
                   stdlib,
-                  plain_fsm
+                  plain_fsm,
+                  lager,
+                  snappy,
+                  ebloom,
+                  lz4
                  ]},
   {mod, {hanoidb_app, []}},
   {env, []}
